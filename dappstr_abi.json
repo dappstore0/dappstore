@@ -1,0 +1,91 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "stage",
+				"type": "string"
+			}
+		],
+		"name": "Update",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "category",
+				"type": "string"
+			},
+			{
+				"name": "homepage",
+				"type": "string"
+			},
+			{
+				"name": "icon",
+				"type": "string"
+			}
+		],
+		"name": "SignUp",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "app",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "category",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "homepage",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "icon",
+				"type": "string"
+			}
+		],
+		"name": "Sign",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "app",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "stage",
+				"type": "string"
+			}
+		],
+		"name": "StageUpdate",
+		"type": "event"
+	}
+]
