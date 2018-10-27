@@ -1,0 +1,14 @@
+.dapp {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: grey;
+}
+
+.label {
+    background-color: grey;
+    padding: 4px;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+}
