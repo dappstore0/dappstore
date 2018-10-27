@@ -7,6 +7,7 @@ app_name = "app"
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("feedback/<str:name>", views.feedback, name="feedback"),
 ]
 
 thread = Thread(target=dappstore.event_watcher.loop)

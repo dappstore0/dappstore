@@ -1,5 +1,7 @@
 from django.db import models
 
+ratings = [(r, r) for r in range(0, 6)]
+
 
 class Dapp(models.Model):
     name = models.CharField(max_length=1000)
@@ -16,3 +18,9 @@ class Dapp(models.Model):
 class State(models.Model):
     key = models.CharField(max_length=1000, primary_key=True)
     value = models.IntegerField()
+
+
+class Feedback(models.Model):
+    dapp = models.ForeignKey(Dapp, on_delete=models.CASCADE)
+    text = models.CharField(max_length=1000)
+    rating = models.CharField(max_length=1, choices=ratings, default=0)
