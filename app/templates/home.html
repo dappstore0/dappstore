@@ -4,17 +4,15 @@
 
 {% block content %}
   <link rel="stylesheet" href="{% static "home.css" %}">
-<nav class="navbar navbar-dark bg-primary">
-  <h1 style="color:white;">DappStore</h1>
-</nav>
-<br>
+  <nav class="navbar navbar-dark bg-primary">
+    <h1 style="color:white;">DappStore</h1>
+  </nav>
+  <br>
   <div class="container">
-
-
     <div class="row navbar navbar-dark bg-dark">
       <h2 style="color:white;">Prototype</h2>
     </div>
-  <br>
+    <br>
     <div class="row">
       {% for prototype in prototypes %}
         <div class="col-3">
@@ -22,55 +20,55 @@
         </div>
       {% endfor %}
     </div>
-  <br>
-  <div class="row navbar navbar-dark bg-dark">
+    <br>
+    <div class="row navbar navbar-dark bg-dark">
       <h2 style="color:white;">MVP</h2>
     </div>
-  <br>
-  <div class="row">
-    {% for mvp in mvps %}
-      <div class="col-3">
-        {% include "dapp.html" with dapp=mvp %}
-      </div>
-    {% endfor %}
-  </div>
+    <br>
+    <div class="row">
+      {% for mvp in mvps %}
+        <div class="col-3">
+          {% include "dapp.html" with dapp=mvp %}
+        </div>
+      {% endfor %}
+    </div>
 
     <br>
     <div class="row navbar navbar-dark bg-dark">
       <h2 style="color:white;">Alpha</h2>
     </div>
-  <br>
-      <div class="row">
-    {% for alpha in alphas %}
-      <div class="col-3">
-        {% include "dapp.html" with dapp=alpha %}
-      </div>
-    {% endfor %}
-  </div>
-  <br>
-  <div class="row navbar navbar-dark bg-dark">
+    <br>
+    <div class="row">
+      {% for alpha in alphas %}
+        <div class="col-3">
+          {% include "dapp.html" with dapp=alpha %}
+        </div>
+      {% endfor %}
+    </div>
+    <br>
+    <div class="row navbar navbar-dark bg-dark">
       <h2 style="color:white;">Beta</h2>
     </div>
-  <br>
-  <div class="row">
-    {% for beta in betas %}
-      <div class="col-3">
-        {% include "dapp.html" with dapp=beta %}
-      </div>
-    {% endfor %}
-  </div>
-  <br>
-  <div class="row navbar navbar-dark bg-dark">
+    <br>
+    <div class="row">
+      {% for beta in betas %}
+        <div class="col-3">
+          {% include "dapp.html" with dapp=beta %}
+        </div>
+      {% endfor %}
+    </div>
+    <br>
+    <div class="row navbar navbar-dark bg-dark">
       <h2 style="color:white;">Live</h2>
     </div>
-  <br>
-  <div class="row">
-  {% for live in lives  %}
-    <div class="col-3">
-      {% include "dapp.html" with dapp=live %}
-    </div>
-  {% endfor %}
-  </div>
-  </div>
     <br>
+    <div class="row">
+      {% for live in lives  %}
+        <div class="col-3">
+          {% include "dapp.html" with dapp=live %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <br>
 {% endblock %}
