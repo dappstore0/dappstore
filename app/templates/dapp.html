@@ -12,7 +12,7 @@
     {% csrf_token %}
     <input type="hidden" name="name" value="{{ dapp.name }}">
     <input class="form-control text-center" type="number" name="eth" min="0" max="{{ dapp.fund_next_stage }}" step="1" value="5"><br>
-    <button class="btn btn-primary" type="submit">Fund</button>
+    <button class="btn btn-primary" type="submit" onclick="alert('You received 50 {{ dapp.name }} tokens')">Fund</button>
   </form>
   <br>
 </div>
