@@ -23,11 +23,11 @@ def home(request):
         x.save()
 
     dapps = Dapp.objects.all()
-    prototypes = dapps.filter(status__exact='prototype')
-    mvps = dapps.filter(status__exact='mvp')
-    alphas = dapps.filter(status__exact='alpha')
-    betas = dapps.filter(status__exact='beta')
-    lives = dapps.filter(status__exact='live')
+    prototypes = dapps.filter(status__iexact='prototype')
+    mvps = dapps.filter(status__iexact='mvp')
+    alphas = dapps.filter(status__iexact='alpha')
+    betas = dapps.filter(status__iexact='beta')
+    lives = dapps.filter(status__iexact='live')
     context = {
         'prototypes': prototypes,
         'mvps': mvps,
