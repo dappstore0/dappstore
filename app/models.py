@@ -8,3 +8,8 @@ class Dapp(models.Model):
     category = models.CharField(max_length=1000)
     homepage = models.CharField(max_length=1000)
     icon = models.CharField(max_length=1000)
+
+
+class State(models.Model):
+    key = models.CharField(max_length=1000, primary_key=True)
+    value = models.IntegerField()
