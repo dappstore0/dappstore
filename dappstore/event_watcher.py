@@ -1,18 +1,54 @@
-import dappstore.settings as settings
+from web3 import Web3, HTTPProvider, WebsocketProvider
+import json
+WEB3 = Web3(HTTPProvider('https://ropsten.infura.io/v3/d41025ea27ac416c8ec077e5ed8db4c8'))
+CONTRACT_ADDRESS=Web3.toChecksumAddress('0x8078B2D6f06b20edb5281A6cE8FcA675932247b4')
+with open('dappstr_abi.json') as json_data:
+    CONTRACT_ABI = json.load(json_data)
+CONTRACT = WEB3.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
+
+WEB3_WSS = Web3(WebsocketProvider('wss://ropsten.infura.io/ws'))
+CONTRACT_WSS = WEB3_WSS.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
+import os
+import time
+os.environ["DJANGO_SETTINGS_MODULE"] = "dappstore.settings"
+import django
+django.setup()
+from app.models import State, Dapp
+
+
+class DappStore:
+    @staticmethod
+    def sign(app, name, category, homepage, icon):
+        Dapp(
+            app=app,
+            name=name,
+            category=category,
+            homepage=homepage,
+            icon=icon,
+            status="protoype"
+        ).save()
+
+    @staticmethod
+    def update(app, stage):
+        dp = Dapp.objects.get(app=app)
+        if dp:
+            dp.status=stage
+            dp.save()
+
 
 match = {
-    settings.CONTRACT_WSS.events.Sign: Restaurant.new,
-    settings.CONTRACT_WSS.events.StageUpdate: Restaurant.update,
+    settings.CONTRACT_WSS.events.Sign: DappStore.sign,
+    settings.CONTRACT_WSS.events.StageUpdate: DappStore.update,
 }
 
 
-def loop_items(conn, block, min_block, max_block, first_loop):
+def loop_items(block, min_block, max_block, first_loop):
     for event, func in match.items():
         # Get all events starting from last block
         data = event.createFilter(fromBlock=block, toBlock=max_block)
         for entry in data.get_all_entries():
             # Call corresponding function
-            func(conn, entry["blockNumber"], **entry["args"])
+            func(**entry["args"])
 
             print("Event: {}".format(event))
 
@@ -35,8 +71,8 @@ def loop_items(conn, block, min_block, max_block, first_loop):
 
 def loop():
     # get block from database
-    conn = database.Conn()
-    db_block = conn.session.query(database.BlockState).first()
+    db_block = State.objects.get(key="block")
+
     block = db_block.value
     firstTime = True
 
@@ -47,7 +83,7 @@ def loop():
         min_block = -2147483647
 
         # Loop over every event
-        min_block, max_block, first_loop = loop_items(conn, block, min_block, max_block, first_loop)
+        min_block, max_block, first_loop = loop_items(block, min_block, max_block, first_loop)
 
         # commit transaction queries
         # Update database min_block
@@ -56,7 +92,6 @@ def loop():
             block = db_block.value = min_block+1
             #db_block.value = min_block+1
 
-        conn.commit()
         if firstTime:
             print("Loop working")
             firstTime = False
