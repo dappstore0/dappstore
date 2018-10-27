@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from random import randint
 from .models import Dapp
 
 st = {
@@ -19,7 +19,7 @@ def home(request):
         #x.current_fund = 0
         if x.current_fund >= x.fund_next_stage:
             x.status = st[x.status.lower()]
-            x.fund_next_stage += 19
+            x.fund_next_stage += randint(10, 30)
         x.save()
 
     dapps = Dapp.objects.all()
