@@ -8,6 +8,7 @@ class Dapp(models.Model):
     category = models.CharField(max_length=1000)
     homepage = models.CharField(max_length=1000)
     icon = models.CharField(max_length=1000, null=True, blank=True)
+    blockchain = models.CharField(max_length=1000)
 
 
 class State(models.Model):
