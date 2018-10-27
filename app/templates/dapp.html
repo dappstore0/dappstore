@@ -6,5 +6,12 @@
 
   <img width="80" src="{{ dapp.icon }}">
   <br>
-  <a href="{{ dapp.homepage }}">{{ dapp.homepage }}</a>
+  <a href="{{ dapp.homepage }}">{{ dapp.homepage }}</a><p>Funding {{ dapp.current_fund }} / {{ dapp.fund_next_stage }} ETH</p>
+     <form action="/" method="post">
+         {% csrf_token %}
+      <input type="hidden" name="name" value="{{ dapp.name }}">
+      <input type="number" name="eth" min="0" max="{{ dapp.fund_next_stage }}" step="1" value="5"><br>
+      <button type="submit">Fund</button>
+    </form>
+    <br>
 </div>

@@ -1,17 +1,40 @@
 [
 	{
-		"constant": false,
+		"anonymous": false,
 		"inputs": [
 			{
-				"name": "stage",
+				"indexed": false,
+				"name": "app",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "category",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "homepage",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "icon",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "blockchain",
 				"type": "string"
 			}
 		],
-		"name": "Update",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
+		"name": "Sign",
+		"type": "event"
 	},
 	{
 		"constant": false,
@@ -30,6 +53,10 @@
 			},
 			{
 				"name": "icon",
+				"type": "string"
+			},
+			{
+				"name": "blockchain",
 				"type": "string"
 			}
 		],
@@ -54,38 +81,29 @@
 			},
 			{
 				"indexed": false,
-				"name": "category",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "homepage",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "icon",
-				"type": "string"
-			}
-		],
-		"name": "Sign",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "app",
-				"type": "address"
-			},
-			{
-				"indexed": false,
 				"name": "stage",
 				"type": "string"
 			}
 		],
 		"name": "StageUpdate",
 		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "stage",
+				"type": "string"
+			}
+		],
+		"name": "Update",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
 	}
 ]

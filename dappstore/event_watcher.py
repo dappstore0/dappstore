@@ -12,8 +12,9 @@ from app.models import State, Dapp
 class DappStore:
     @staticmethod
     def sign(app, name, category, homepage, icon, blockchain):
+        print(app)
         Dapp(
-            app=app,
+            address=app,
             name=name,
             category=category,
             homepage=homepage,
@@ -23,9 +24,10 @@ class DappStore:
         ).save()
 
     @staticmethod
-    def update(app, stage):
-        dp = Dapp.objects.get(app=app)
-        if dp:
+    def update(app, name, stage):
+        dp = Dapp.objects.filter(name__exact=name)[0]
+
+        if dp and dp.address == app:
             dp.status=stage
             dp.save()
 
@@ -84,6 +86,8 @@ def loop():
         if min_block != -2147483647:
             # Search from the block +=1
             block = db_block.value = min_block+1
+            db_block.value = block
+            db_block.save()
             #db_block.value = min_block+1
 
         if firstTime:

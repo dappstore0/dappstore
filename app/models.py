@@ -9,6 +9,8 @@ class Dapp(models.Model):
     homepage = models.CharField(max_length=1000)
     icon = models.CharField(max_length=1000, null=True, blank=True)
     blockchain = models.CharField(max_length=1000)
+    current_fund = models.IntegerField(default=0)
+    fund_next_stage = models.IntegerField(default=10)
 
 
 class State(models.Model):
