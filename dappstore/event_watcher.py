@@ -11,14 +11,15 @@ from app.models import State, Dapp
 
 class DappStore:
     @staticmethod
-    def sign(app, name, category, homepage, icon):
+    def sign(app, name, category, homepage, icon, blockchain):
         Dapp(
             app=app,
             name=name,
             category=category,
             homepage=homepage,
             icon=icon,
-            status="protoype"
+            status="protoype",
+            blockchain=blockchain
         ).save()
 
     @staticmethod
