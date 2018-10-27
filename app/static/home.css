@@ -7,9 +7,9 @@
 }
 
 .label {
-    background-color: grey;
+    background-color: #384672;
     padding: 4px;
-    font-size: 14px;
+    font-size: 0.75rem;
     color: white;
     border-radius: 3px;
 }
