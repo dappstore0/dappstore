@@ -8,11 +8,11 @@ CONTRACT = WEB3.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
 
 WEB3_WSS = Web3(WebsocketProvider('wss://ropsten.infura.io/ws'))
 CONTRACT_WSS = WEB3_WSS.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
-import os
+#import os
 import time
-os.environ["DJANGO_SETTINGS_MODULE"] = "dappstore.settings"
-import django
-django.setup()
+#os.environ["DJANGO_SETTINGS_MODULE"] = "dappstore.settings"
+#import django
+#django.setup()
 from app.models import State, Dapp
 
 
@@ -37,8 +37,8 @@ class DappStore:
 
 
 match = {
-    settings.CONTRACT_WSS.events.Sign: DappStore.sign,
-    settings.CONTRACT_WSS.events.StageUpdate: DappStore.update,
+    CONTRACT_WSS.events.Sign: DappStore.sign,
+    CONTRACT_WSS.events.StageUpdate: DappStore.update,
 }
 
 
