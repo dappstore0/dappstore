@@ -1,13 +1,6 @@
 from web3 import Web3, HTTPProvider, WebsocketProvider
 import json
-WEB3 = Web3(HTTPProvider('https://ropsten.infura.io/v3/d41025ea27ac416c8ec077e5ed8db4c8'))
-CONTRACT_ADDRESS=Web3.toChecksumAddress('0x8078B2D6f06b20edb5281A6cE8FcA675932247b4')
-with open('dappstr_abi.json') as json_data:
-    CONTRACT_ABI = json.load(json_data)
-CONTRACT = WEB3.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
-
-WEB3_WSS = Web3(WebsocketProvider('wss://ropsten.infura.io/ws'))
-CONTRACT_WSS = WEB3_WSS.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
+import dappstore.settings as settings
 #import os
 import time
 #os.environ["DJANGO_SETTINGS_MODULE"] = "dappstore.settings"
@@ -37,8 +30,8 @@ class DappStore:
 
 
 match = {
-    CONTRACT_WSS.events.Sign: DappStore.sign,
-    CONTRACT_WSS.events.StageUpdate: DappStore.update,
+    settings.CONTRACT_WSS.events.Sign: DappStore.sign,
+    settings.CONTRACT_WSS.events.StageUpdate: DappStore.update,
 }
 
 

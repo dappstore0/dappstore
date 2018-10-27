@@ -120,3 +120,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+from web3 import Web3, HTTPProvider, WebsocketProvider
+WEB3 = Web3(HTTPProvider('https://ropsten.infura.io/v3/d41025ea27ac416c8ec077e5ed8db4c8'))
+CONTRACT_ADDRESS=Web3.toChecksumAddress('0x8078B2D6f06b20edb5281A6cE8FcA675932247b4')
+with open('dappstr_abi.json') as json_data:
+    CONTRACT_ABI = json.load(json_data)
+CONTRACT = WEB3.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
+
+WEB3_WSS = Web3(WebsocketProvider('wss://ropsten.infura.io/ws'))
+CONTRACT_WSS = WEB3_WSS.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
