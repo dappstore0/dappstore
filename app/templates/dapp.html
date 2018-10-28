@@ -1,4 +1,7 @@
 <div class="dapp text-center">
+    <div style="background-color: #343a40">
+        <p style="color: white"><b>28</b> days to go<br>
+    </div>
   <h3>
     {{ dapp.name }}
     <br>
@@ -7,7 +10,15 @@
 
   <img height="60px" src="{{ dapp.icon }}">
   <br>
-  <a href="{{ dapp.homepage }}">{{ dapp.homepage }}</a><p>Funding {{ dapp.current_fund }} / {{ dapp.fund_next_stage }} ETH</p>
+
+  <a href="{{ dapp.homepage }}">{{ dapp.homepage }}</a>
+
+   <!-- <div style="background-color: #343a40">
+        <p style="color: white"><b>28</b> days to go<br>
+        <b>45</b> days to deliver</p>
+    </div>
+    -->
+    <p>Funding {{ dapp.current_fund }} / {{ dapp.fund_next_stage }} ETH</p>
   <form action="/" method="post">
     {% csrf_token %}
     <input type="hidden" name="name" value="{{ dapp.name }}">

@@ -36,7 +36,7 @@ def home(request):
         "alphas": alphas,
         "betas": betas,
         "lives": lives,
-        "title": "Welcome to The DappStore!",
+        "title": "Welcome to The DappMap!",
     }
     return render(request, "home.html", context)
 
