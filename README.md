@@ -1,4 +1,5 @@
 # dAppstore
+
 The 'dAppstore' is a decentralized application where developers can publish their dApps are the various milestones:
 > Prototype → MVP → Alpha version → Beta version → Live version
 
@@ -16,3 +17,12 @@ The transactions can be seen at
 https://ropsten.etherscan.io/address/0x326008fFD5C0B86F96eb07989aE6C73586B32B95
 
 the transactions are the signup of dApps and status changes in their development cycle
+
+## Instructions
+
+To run the web app:
+``` bash
+pip install -r requirements
+python init.py
+python manage.py runserver
+```
