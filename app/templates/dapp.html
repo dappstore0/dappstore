@@ -1,7 +1,17 @@
 <div class="dapp text-center">
-    <div style="background-color: #343a40">
-        <p style="color: white"><b>28</b> days to go<br>
+    {% if dapp.days_to_go < 14 %}
+    <div style="background-color: #FF6666">
+        <p style="color: black"><b>{{ dapp.days_to_go }}</b> days to go<br>
     </div>
+    {% elif dapp.days_to_go < 60 %}
+        <div style="background-color: #FFFF66">
+        <p style="color: black"><b>{{ dapp.days_to_go }}</b> days to go<br>
+    </div>
+    {% else %}
+        <div style="background-color: #B2FF66">
+        <p style="color: black"><b>{{ dapp.days_to_go }}</b> days to go<br>
+    </div>
+    {% endif %}
   <h3>
     {{ dapp.name }}
     <br>
