@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+  <link rel="stylesheet" href="{% static "style.css" %}">
+  <br>
+  <div class="container">
+    <div class="row navbar navbar-dark bg-dark">
+      <h2 style="color:white;">Feedback</h2>
+    </div>
+    <br>
+    {% for feedback in feedbacks %}
+      <div class="feedback">
+        <div class="row">
+          <div class="col-10">
+            {{ feedback.text }}
+          </div>
+          <div class="col-2">
+            Rating: {{ feedback.rating }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <br>
+    <div class="row navbar navbar-dark bg-dark">
+      <h3 style="color:white;">Submit your Feedback</h3>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <form action="{% url "app:feedback" name %}" method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="field">
+            {{ form.text.errors }}
+            {{ form.text.label_tag }}
+            {{ form.text }}
+          </div>
+          <br>
+          <div class="field">
+            {{ form.rating.errors }}
+            {{ form.rating.label_tag }}
+            {{ form.rating }}
+          </div>
+          <input type="hidden" name="name" value="{{ name }}">
+          <button class="btn btn-success btn-sm">Submit</button>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+{% endblock %}
